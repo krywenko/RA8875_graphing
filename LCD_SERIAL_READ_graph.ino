@@ -119,7 +119,7 @@ void parseCommand(String com)
  //--graphing variables 
     int16_t xpos = 0;
     int16_t ypos = 0;
-    uint16_t radius = 52;
+    uint16_t radius = 65;
     int16_t distance = 14;
 
 //--com variables  
@@ -157,8 +157,8 @@ reading = input2;
  DrawBarChartV(tft, 10,  440, 10, 120, -40, 40 , 20, reading , 4 , 0, DKORANGE, BLACK, BLUE, WHITE, BLACK, "TEMP", graph_2);
  int Cntr = 30; if (input2 > 999) Cntr = 20; //if(input2<100) Cntr=40;
  int Gnum = 4;
-tft.ringMeter(input2,-40,40,xpos+ (radius * Gnum) + (distance*2),ypos,radius,"none",3,tft.htmlTo565(0x848482),150,10);
-tft.setFontScale(0);tft.setTextColor(RA8875_BLUE, RA8875_BLACK);tft.setCursor(xpos+ (radius * Gnum) + (distance*2)+30,ypos+60);tft.print(" TEMP");tft.setFontScale(1);tft.setCursor(xpos+ (radius * Gnum) + (distance*2)+Cntr,ypos+25);tft.print(reading);
+tft.ringMeter(input2,-40,40,xpos+ (radius * Gnum) + (distance*2),ypos,radius,"none",3,tft.htmlTo565(0x848482),110,10);
+tft.setFontScale(1);tft.setTextColor(RA8875_BLUE, RA8875_BLACK);tft.setCursor(xpos+ (radius * Gnum) + (distance*2)+30,ypos+40);tft.print("TEMP");tft.setFontScale(1);tft.setCursor(xpos+ (radius * Gnum) + (distance*2)+Cntr,ypos+80);tft.print(reading);
 tft.setFontScale(0);  
     }
  if (part1 == "3")
@@ -170,8 +170,8 @@ tft.setFontScale(0);
     raw_CMD=input3;
 int Gnum = 3;   //graph number  
 int Cntr = 30; if (input3 > 999) Cntr = 20;
-tft.ringMeter(input3,0,100,xpos+ (radius * Gnum) + (distance*2),ypos,radius,"none",7,tft.htmlTo565(0x848482),150,10);
-tft.setFontScale(0);tft.setTextColor(RA8875_BLUE, RA8875_BLACK);tft.setCursor(xpos+ (radius * Gnum) + (distance*2)+30,ypos+60);tft.print(" RH%");tft.setFontScale(1);tft.setCursor(xpos+ (radius * Gnum) + (distance*2)+Cntr,ypos+25);tft.print("50");
+tft.ringMeter(input3,0,100,xpos+ (radius * Gnum) + (distance*2),ypos,radius,"none",7,tft.htmlTo565(0x848482),110,10);
+tft.setFontScale(1);tft.setTextColor(RA8875_BLUE, RA8875_BLACK);tft.setCursor(xpos+ (radius * Gnum) + (distance*2)+30,ypos+40);tft.print(" RH%");tft.setFontScale(1);tft.setCursor(xpos+ (radius * Gnum) + (distance*2)+Cntr,ypos+80);tft.print("50");
 tft.setFontScale(0);  
     
     Serial.println(input3);
@@ -185,10 +185,11 @@ tft.setFontScale(0);
     String raw_CMD;
      float input4 = part2.toInt();
     ext1 = input4;
-    int Cntr = 30; if (input4 > 999) Cntr = 20;
+    int Cntr = 30;// if (input4 > 999) Cntr = 20;
     int Gnum =2;
-tft.ringMeter(input4,-10,2000,xpos+ (radius * Gnum) + distance,ypos,radius,"none",5,tft.htmlTo565(0x848482),150,10);
-tft.setFontScale(0);tft.setTextColor(RA8875_GREEN, RA8875_BLACK);tft.setCursor(xpos+ (radius * Gnum) + distance+30,ypos+60);tft.print("SOLAR");tft.setFontScale(1);tft.setCursor(xpos+ (radius * Gnum) + distance+Cntr,ypos+25);tft.print(ext1);
+
+tft.setFontScale(1);tft.setTextColor(RA8875_GREEN, RA8875_BLACK);tft.setCursor(xpos+ (radius * Gnum) + distance+30,ypos+40);tft.print("SOLAR");tft.setFontScale(1);tft.setCursor(xpos+ (radius * Gnum) + distance+Cntr,ypos+80);tft.print(ext1);tft.print("   ");
+tft.ringMeter(input4,-10,2000,xpos+ (radius * Gnum) + distance,ypos,radius,"none",5,tft.htmlTo565(0x848482),110,10);
 tft.setFontScale(0);    
 Serial.println(ext1);
     }
@@ -201,19 +202,20 @@ Serial.println(ext1);
     String raw_CMD;
     float input5 = part2.toInt();
     //input5 = input5/1000;
-    int Cntr;
-    if (input5 > 999){ Cntr = 20; if (chg > 0) chg=0;}
-    if (input5 < 999){ Cntr = 30;if (chg < 2 ){tft.fillRect(xpos+15,ypos+30,75,25,RA8875_BLACK);chg++;}}
+    int Cntr = 30;
+        
+   // if (input5 > 999){ Cntr = 20; if (chg > 0) chg=0;}
+    //if (input5 < 999){ Cntr = 30;if (chg < 2 ){tft.fillRect(xpos+15,ypos+30,75,25,RA8875_BLACK);chg++;}}
     
-  //  
-tft.ringMeter(input5,-1,8000,xpos,ypos,radius,"none",4,tft.htmlTo565(0x848482),150,10);
+tft.setFontScale(1);tft.setTextColor(RA8875_RED, RA8875_BLACK);tft.setCursor(xpos+30,ypos+40);tft.print("GRID");tft.setFontScale(1);tft.setCursor(xpos+Cntr,ypos+80);tft.print(ext2);tft.print("   ");
+  
+tft.ringMeter(input5,-1,8000,xpos,ypos,radius,"none",4,tft.htmlTo565(0x848482),110,10);
 
-tft.setFontScale(0);tft.setTextColor(RA8875_RED, RA8875_BLACK);tft.setCursor(xpos+30,ypos+60);tft.print(" GRID");tft.setFontScale(1);tft.setCursor(xpos+Cntr,ypos+25);tft.print(ext2);
 tft.setFontScale(0);
 //tft.fillRect(10,30,80,25,RA8875_GREEN);
   ext2=input5;
 Serial.println(input5);
-screenPie(ext1,input5); 
+screenPie(ext1,ext2,160); 
     }
  if (part1 == "6")
     {
@@ -413,7 +415,7 @@ Serial.println(input19);
 //////////// Pie Chart ///////////
 /////////////////////////////////
 
-int screenPie(int inp1,int inp2)
+int screenPie(int inp1,int inp2 ,int inp3)
 {
   const uint16_t x = 89;
   const uint16_t y = 219;
@@ -424,14 +426,14 @@ int screenPie(int inp1,int inp2)
   Serial.println("Egraph");
   if (inp1 <0){inp1 =0;}
   if (inp2 <0) {inp2 =0;}
-  //int inp2 = 3000;
-  float vx = inp1+inp2 +150;
-  float t1= vx/inp1;
-  float t2 = vx/inp2;
-  float t3 = vx/150;
-int d1 = 360/t1;
-int d2 = 360/t2;
-int d3 = 360/t3;
+  if (inp3 <0){inp3 - 0;}
+  float vx = inp1+inp2 +inp3;
+  float t1= inp1/vx;
+  float t2 = inp2/vx;
+  float t3 = inp3/vx;
+int d1 = 360*t1;
+int d2 = d1+(360*t2);
+int d3 = 360*t3;
 int t1a = t1;
 int t2a =t2;
 int t3a = t3;
@@ -440,15 +442,15 @@ int t2b;
 int t3b;
  // tft.clearScreen();
   tft.drawArc(x , y , radius, radius, 0, d1, tft.Color565(198, 255, 13));
-  tft.drawArc(x , y , radius , radius , d1, 360, tft.Color565(255, 0, 54));
- // tft.drawArc(x , y , radius, radius, d2, 360, tft.Color565(0, 255, 241));
+  tft.drawArc(x , y , radius , radius , d1,d2 , tft.Color565(255, 0, 54));
+  tft.drawArc(x , y , radius, radius, d2, 360, tft.Color565(0, 255, 241));
 
   //tft.fillRect(180,180,10,10,RA8875_BLUE);
-  tft.setFontScale(1);tft.setTextColor(RA8875_CYAN, RA8875_BLACK);tft.setCursor(180, 150);tft.print(150);tft.print("");tft.setFontScale(0);tft.setCursor(180, 130);tft.print("DIVERTER");
+  tft.setFontScale(1);tft.setTextColor(RA8875_CYAN, RA8875_BLACK);tft.setCursor(180, 150);tft.print(100*t3);tft.print("% ");tft.setFontScale(0);tft.setCursor(180, 130);tft.print("DIVERTER");
  // tft.fillRect(180,240,10,10,RA8875_RED);
-  tft.setFontScale(1);tft.setTextColor(RA8875_RED, RA8875_BLACK);tft.setCursor(180, 210);tft.print(ext2);;tft.print("");tft.setFontScale(0);tft.setCursor(180, 190);tft.print("GRID");
+  tft.setFontScale(1);tft.setTextColor(RA8875_RED, RA8875_BLACK);tft.setCursor(180, 210);tft.print(100*t2);;tft.print("% ");tft.setFontScale(0);tft.setCursor(180, 190);tft.print("GRID");
  // tft.fillRect(180,280,10,10,RA8875_GREEN);
-  tft.setFontScale(1);tft.setTextColor(RA8875_YELLOW, RA8875_BLACK);tft.setCursor(180, 270);tft.print(ext1);tft.print("");tft.setFontScale(0);tft.setCursor(180, 250);tft.print("SOLAR");
+  tft.setFontScale(1);tft.setTextColor(RA8875_YELLOW, RA8875_BLACK);tft.setCursor(180, 270);tft.print(100*t1);tft.print("% ");tft.setFontScale(0);tft.setCursor(180, 250);tft.print("SOLAR");
   t1b = ext1;
   t2b =ext2;
   t3b = t3a;
