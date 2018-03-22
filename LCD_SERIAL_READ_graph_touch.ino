@@ -78,7 +78,7 @@ Serial.println("started");
 tft.useINT(RA8875_INT);
   tft.touchBegin();//enable Touch support!
  // interface();
-  tft.enableISR(false);
+  tft.enableISR(true);
 tft.brightness(50);
 }
 
