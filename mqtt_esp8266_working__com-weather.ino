@@ -32,9 +32,9 @@
 /**
  * Wunderground Settings
  */
-const String  WUNDERGRROUND_API_KEY = "yourkey";
+const String  WUNDERGRROUND_API_KEY = "e01e78beb97907b8";
 const String  WUNDERGR_UND_STATE_OR_COUNTRY = "CAN";
-const String  WUNDERGR_UND_CITY = "Winnipeg";
+const String  WUNDERGR_UND_CITY = "ARBORG";
 const String  WUNDERGRROUND_LANGUAGE = "EN";
 const boolean IS_METRIC = true;
 const boolean USE_PM = false;
@@ -120,18 +120,22 @@ void weather(){
 
   for (int i = 0; i < maxForecasts; i++) {
    // Serial.println("------------------------------------");
-    Serial.print("cmd_24(" + forecasts[i].forecastIcon);Serial.println(")");
+    Serial.print("cmd_24(" + forecasts[i].forecastIcon + ")");//Serial.println(")");
+    delay(50);
     //Serial.println("getForecastTitle: " + forecasts[i].forecastTitle);
-   Serial.print("cmd_22(" + forecasts[i].forecastLowTemp);Serial.println(")");
-   Serial.print("cmd_23(" + forecasts[i].forecastHighTemp);Serial.println(")");
+   Serial.print("cmd_22(" + forecasts[i].forecastLowTemp + ")");//Serial.println(")");
+   delay(500);
+   Serial.print("cmd_23(" + forecasts[i].forecastHighTemp + ")");//Serial.println(")");
+   delay(50);
    //Serial.print("cmd_26(" + forecasts[i].forecastDay);Serial.println(")");
    // Serial.println("getForecastMonth: " + forecasts[i].forecastMonth);
-    Serial.print("cmd_21(" + forecasts[i].forecastText );Serial.println(")");
-  Serial.print("cmd_25(" + forecasts[i].PoP);Serial.println(")");
-
+    Serial.println("cmd_21(" + forecasts[i].forecastText + ")");//;Serial.println(")");
+    delay(50);
+   Serial.print("cmd_25(" + forecasts[i].PoP + ")");//Serial.println(")");
+   delay(50);
   }
 
-delay(3000);
+delay(1000);
 }
 
 void setup_wifi() {
@@ -341,7 +345,7 @@ void reconnect() {
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     // Attempt to connect
-    if (client.connect("LCDClient2")) {
+    if (client.connect("LCDClient1")) {
       Serial.println("connected");
       // Once connected, publish an announcement...
       client.publish("outTopic", "hello world");

@@ -78,8 +78,8 @@ Serial.println("started");
 tft.useINT(RA8875_INT);
   tft.touchBegin();//enable Touch support!
  // interface();
-  tft.enableISR(true);
-
+  tft.enableISR(false);
+tft.brightness(50);
 }
 
 void loop() 
@@ -457,13 +457,19 @@ if (part1 == "25")
    Fpop=part2;
     Serial.println(part2);
   }
-
+if (Screen==1){
 tft.setFontScale(1);tft.setTextColor(RA8875_CYAN, RA8875_BLACK);tft.setCursor(505, 40);tft.print(Fhigh);tft.setFontScale(0);tft.print(" C ");tft.setFontScale(1);tft.setCursor(430, 40);tft.print("High");
  tft.setFontScale(1);tft.setTextColor(RA8875_CYAN, RA8875_BLACK);tft.setCursor(505, 70);tft.print(Flow);tft.setFontScale(0);tft.print(" C ");tft.setFontScale(1);tft.setCursor(430, 70);tft.print("Low");
  tft.setFontScale(1);tft.setTextColor(RA8875_CYAN, RA8875_BLACK);tft.setCursor(570, 10);tft.print(Fday);tft.setCursor(430, 10);tft.setFontScale(1);tft.print("Forecast");
- 
   tft.setFontScale(1);tft.setTextColor(RA8875_CYAN, RA8875_BLACK);tft.setCursor(505, 100);tft.print(Fpop);tft.setFontScale(0);tft.print(" % ");tft.setFontScale(1);tft.setCursor(430, 100);tft.print("PoP ");
+ tft.setFontScale(0);}
+ 
+ if(Screen==6){
+  tft.setFontScale(1);tft.setTextColor(RA8875_YELLOW, RA8875_BLUE);tft.setCursor(320, 0);tft.print(weather);tft.setFontScale(1);tft.setCursor(0, 0);tft.setTextColor(RA8875_GREEN, RA8875_BLUE);tft.print("TODAY'S FORECAST - ");
  tft.setFontScale(0);
+ 
+ }
+ 
    ///---- GRaphing_----
 
 ///////////Graphing Charts///////////
