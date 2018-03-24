@@ -8,7 +8,7 @@ String command; // serial input capture string
 /**
  * Wunderground Settings
  */
-const String  WUNDERGRROUND_API_KEY = "e01e78beb97907b8";
+const String  WUNDERGRROUND_API_KEY = "key";
 const String  WUNDERGR_UND_STATE_OR_COUNTRY = "CAN";
 const String  WUNDERGR_UND_CITY = "ARBORG";
 const String  WUNDERGRROUND_LANGUAGE = "EN";
