@@ -261,13 +261,13 @@ uint16_t choosenColor = 0;
         if ((tx > 10 && tx < 135)){
          tft.setFontScale(1);tft.setTextColor(RA8875_YELLOW, RA8875_BLACK);tft.setCursor(100, 165);tft.setTextColor(RA8875_CYAN, RA8875_BLACK);tft.print("DOWN");
         tft.setFontScale(0);
-        Serial2.println("cmd_8(0)");
+        Serial2.println("cmd_100(0)");
         delay(200);
         }
          else if (tx >145  && tx <280 ){
          tft.setFontScale(1);tft.setTextColor(RA8875_YELLOW, RA8875_BLACK);tft.setCursor(100, 165);tft.setTextColor(RA8875_YELLOW, RA8875_BLACK);tft.print(" UP ");
         tft.setFontScale(0);
-        Serial2.println("cmd_8(1)");
+        Serial2.println("cmd_100(1)");
           delay(200);
         } 
       }
