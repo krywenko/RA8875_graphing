@@ -70,7 +70,7 @@ char msg3[50];
 
 void setup() {
  Serial.begin(115200);
-Serial2.begin(115200);
+Serial2.begin(19200);
   long unsigned debug_start = millis ();
   while (!Serial && ((millis () - debug_start) <= 5000)) ;
   Serial.println("RA8875 start");
