@@ -16,3 +16,6 @@ LCD_Serial_read_graph.ino--- is the graphing sketch for the  arduino connected t
 
 Touch screen and the weather interface  is based on esp weather station, but  I had to turn off some debuging info in the wundercastforcast.h  if you wish to  use it on this screen you either can use the supplied "**forcast.h" or edit your copy by commentting out the serial print lines with in it 
  there 6 different touch screen pages  to add additional radial meters..  they are cureently coloured  just for easier distinction, each screen butto is located where meter should be ..
+ 
+ 
+ openwrtWUmqtt.tar.gz are files for openwrt router to  run as a service to download WU statistics and broadcast them via MQTT so one call to WU network can update many devices  connected to an openwrt router 
