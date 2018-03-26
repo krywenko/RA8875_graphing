@@ -20,7 +20,7 @@ WundergroundForecast wunderground(IS_METRIC);
 
 uint32_t runTime = -99999;
 
-//--topics
+//--topics parsing 
 String input1 = "/invert";
 String input2 = "/temp/28ff48a470165ae";
 String input3 = "/temp/humid";
