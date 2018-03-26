@@ -19,3 +19,17 @@ Touch screen and the weather interface  is based on esp weather station, but  I 
  
  
  openwrtWUmqtt.tar.gz are files for openwrt router to  run as a service to download WU statistics and broadcast them via MQTT so one call to WU network can update many devices  connected to an openwrt router 
+ 
+ if doing multiple MQTT subscribes - it only support 7 tipic. but if you wish many more then 7  just divide them into categoried ie subscribe topic
+energy/#
+sensor/#
+switch/#
+
+then use place the the name of the topic group/item in the inString
+energy/grid
+energy/solar
+sensor/garage
+sensor/28ff48a470165ae
+switch/sw1
+switch/sw2
+....etc 
