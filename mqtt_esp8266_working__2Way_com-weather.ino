@@ -8,7 +8,7 @@ String command; // serial input capture string
 /**
  * Wunderground Settings
  */
-const String  WUNDERGRROUND_API_KEY = "key";
+const String  WUNDERGRROUND_API_KEY = "e01e78beb97907b8";
 const String  WUNDERGR_UND_STATE_OR_COUNTRY = "CAN";
 const String  WUNDERGR_UND_CITY = "ARBORG";
 const String  WUNDERGRROUND_LANGUAGE = "EN";
@@ -20,55 +20,30 @@ WundergroundForecast wunderground(IS_METRIC);
 
 uint32_t runTime = -99999;
 
-
-// --value carrier
-String inString1 = ""; 
-String inString2 = ""; 
-String inString3 = "";
-String inString4 = ""; 
-String inString5 = ""; 
-//--reserved for later use
-
-String inString6 = ""; 
-String inString7 = "";
-String inString8 = ""; 
-/*String inString9 = ""; 
-String inString10 = ""; 
-String inString11 = ""; 
-String inString12 = ""; 
-String inString13 = "";
-String inString14 = ""; 
-String inString15 = ""; 
-String inString16 = ""; 
-String inString17 = "";
-String inString18 = ""; 
-String inString19 = ""; 
-String inString20 = "";
-*/
 //--topics
 String input1 = "/invert";
 String input2 = "/temp/28ff48a470165ae";
-String input3 = "/humid";
+String input3 = "/temp/humid";
 String input4 = "/wind";
 String input5 = "/grid";
 //---reserved for later use
 
-String input6 = "divert";
-String input7 = "Ttemp";
-String input8 = "Tset";
-/*String input9 = "tmp4";
+String input6 = "/energy/divert";
+String input7 = "/temp/Ttemp";
+String input8 = "temp/Tset";
+String input9 = "/WU/ALERT";
 String input10 = "tmp5";
 String input11 = "tmp6";
 String input12 = "tmp7";
 String input13 = "tmp8";
-String input14 = "tmp9";
-String input15 = "tmp10";
-String input16 = "tmp11";
-String input17 = "tmp12";
-String input18 = "tmp13";
-String input19 = "tmp14";
-String input20 = "tmp15";
-*/
+String input14 = "/WU/WCT";
+String input15 = "/WU/WCW";
+String input16 = "/WU/WCH";
+String input17 = "/WU/WF1";
+String input18 = "/WU/WF2";
+String input19 = "/WU/WF3";
+String input20 = "/WU/WF4";
+
 // Update these with values suitable for your network.
 
 const char* ssid = "IOT";
@@ -87,7 +62,7 @@ void setup() {
   setup_wifi();
   client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
-  weather();
+ // weather();
 }
 void weather(){
    uint8_t maxForecasts = 1;
@@ -141,167 +116,168 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
 
 if (input1 == topic){
-  inString1 = "";
+ String inString = "";
   //scan++;
   for (int i=0;i<length;i++) {
-     inString1 +=  ((char)payload[i]);
+     inString +=  ((char)payload[i]);
   }
-  Serial.print("cmd_1("); Serial.print(inString1); Serial.println(")");
+  Serial.print("cmd_1("); Serial.print(inString); Serial.println(")");
   }
 if (input2 == topic){
- inString2 = "";
+ String inString = "";
   for (int i=0;i<length;i++) {
-     inString2 +=  ((char)payload[i]);  
+     inString +=  ((char)payload[i]);  
   }
-   Serial.print("cmd_2("); Serial.print(inString2); Serial.println(")");
+   Serial.print("cmd_2("); Serial.print(inString); Serial.println(")");
 } 
  if (input3 == topic){
-  inString3 = "";
+  String inString = "";
   for (int i=0;i<length;i++) {
-     inString3 +=  ((char)payload[i]);
+     inString +=  ((char)payload[i]);
   }
-   Serial.print("cmd_3("); Serial.print(inString3); Serial.println(")");
+   Serial.print("cmd_3("); Serial.print(inString); Serial.println(")");
   }
 if (input4 == topic){
- inString4 = "";
+ String inString = "";
   for (int i=0;i<length;i++) {
-     inString4 +=  ((char)payload[i]); 
+     inString +=  ((char)payload[i]); 
   }
-  Serial.print("cmd_4("); Serial.print(inString4); Serial.println(")");  
+  Serial.print("cmd_4("); Serial.print(inString); Serial.println(")");  
 } 
 if (input5 == topic){
- inString5 = "";
+  String inString = "";
   for (int i=0;i<length;i++) {
-     inString5 +=  ((char)payload[i]);     
+     inString +=  ((char)payload[i]);     
   }
- Serial.print("cmd_5("); Serial.print(inString5); Serial.println(")"); 
+ Serial.print("cmd_5("); Serial.print(inString); Serial.println(")"); 
 } 
 //---reseved for later use 
 
 if (input6 == topic){
-  inString6 = "";
+ String inString = "";
   //scan++;
   for (int i=0;i<length;i++) {
-     inString6 +=  ((char)payload[i]);   
+     inString +=  ((char)payload[i]);   
   }
-  Serial.print("cmd_6("); Serial.print(inString6); Serial.println(")");
+  Serial.print("cmd_6("); Serial.print(inString); Serial.println(")");
   }
 if (input7 == topic){
- inString7 = "";
+ String inString = "";
   for (int i=0;i<length;i++) {
-     inString7 +=  ((char)payload[i]);      
+     inString +=  ((char)payload[i]);      
   }
-   Serial.print("cmd_7("); Serial.print(inString7); Serial.println(")");
+   Serial.print("cmd_7("); Serial.print(inString); Serial.println(")");
 } 
  if (input8 == topic){
-  inString8 = "";
+ String inString = "";
   //scan++;
   for (int i=0;i<length;i++) {
-     inString8 +=  ((char)payload[i]);    
+     inString +=  ((char)payload[i]);    
   }
-  Serial.print("cmd_8("); Serial.print(inString8); Serial.println(")");
+  Serial.print("cmd_8("); Serial.print(inString); Serial.println(")");
   }
-/*if (input9 == topic){
- inString9 = "";
+if (input9 == topic){
+ String inString = "";
   for (int i=0;i<length;i++) {
-     inString9 +=  ((char)payload[i]); 
+     inString +=  ((char)payload[i]); 
   }
-  Serial.print("cmd_9("); Serial.print(inString9); Serial.println(")");    
+  Serial.print("cmd_9("); Serial.print(inString); Serial.println(")");    
 } 
 if (input10 == topic){
- inString10 = "";
+ String inString = "";
   for (int i=0;i<length;i++) {
-     inString10 +=  ((char)payload[i]); 
+     inString +=  ((char)payload[i]); 
   }
-     Serial.print("cmd_10("); Serial.print(inString10); Serial.println(")");
+     Serial.print("cmd_10("); Serial.print(inString); Serial.println(")");
       
 } 
 
 if (input11 == topic){
-  inString11 = "";
+  String inString = "";
   //scan++;
   for (int i=0;i<length;i++) {
-     inString11 +=  ((char)payload[i]);
-     Serial.print("cmd_11("); Serial.print(inString11); Serial.println(")");
+     inString +=  ((char)payload[i]);
+     Serial.print("cmd_11("); Serial.print(inString); Serial.println(")");
   }
   }
 if (input12 == topic){
- inString12 = "";
+String inString = "";
   for (int i=0;i<length;i++) {
-     inString12 +=  ((char)payload[i]); 
+     inString +=  ((char)payload[i]); 
   } 
-     Serial.print("cmd_12("); Serial.print(inString12); Serial.println(")");
+     Serial.print("cmd_12("); Serial.print(inString); Serial.println(")");
 } 
  if (input13 == topic){
-  inString13 = "";
+  String inString = "";
   //scan++;
   for (int i=0;i<length;i++) {
-     inString13 +=  ((char)payload[i]);
+     inString +=  ((char)payload[i]);
   }
-     Serial.print("cmd_13("); Serial.print(inString13); Serial.println(")");
+     Serial.print("cmd_13("); Serial.print(inString); Serial.println(")");
   }
 if (input14 == topic){
- inString14 = "";
+ String inString = "";
   for (int i=0;i<length;i++) {
-     inString14 +=  ((char)payload[i]);  
+     inString +=  ((char)payload[i]);  
   }
-     Serial.print("cmd_14("); Serial.print(inString14); Serial.println(")");
+     Serial.print("cmd_14("); Serial.print(inString); Serial.println(")");
 } 
 if (input15 == topic){
- inString15 = "";
+ String inString = "";
   for (int i=0;i<length;i++) {
-     inString15 +=  ((char)payload[i]); 
+     inString +=  ((char)payload[i]); 
   }
-     Serial.print("cmd_15("); Serial.print(inString15); Serial.println(")");
+     Serial.print("cmd_15("); Serial.print(inString); Serial.println(")");
 } 
 
  if (input16 == topic){
-  inString16 = "";
+  String inString = "";
   //scan++;
   for (int i=0;i<length;i++) {
-     inString16 +=  ((char)payload[i]);
+     inString +=  ((char)payload[i]);
   }
-     Serial.print("cmd_16("); Serial.print(inString16); Serial.println(")");
+     Serial.print("cmd_16("); Serial.print(inString); Serial.println(")");
   }
 if (input17 == topic){
- inString17 = "";
+ String inString = "";
   for (int i=0;i<length;i++) {
-     inString17 +=  ((char)payload[i]); 
+     inString +=  ((char)payload[i]); 
   } 
-     Serial.print("cmd_17("); Serial.print(inString17); Serial.println(")");
+     Serial.print("cmd_17("); Serial.print(inString); Serial.println(")");
 } 
  if (input18 == topic){
-  inString18 = "";
+  String inString = "";
   //scan++;
   for (int i=0;i<length;i++) {
-     inString18 +=  ((char)payload[i]);
+     inString +=  ((char)payload[i]);
   }
-     Serial.print("cmd_18("); Serial.print(inString18); Serial.println(")");
+     Serial.print("cmd_18("); Serial.print(inString); Serial.println(")");
   }
 if (input19 == topic){
- inString19 = "";
+ String inString = "";
   for (int i=0;i<length;i++) {
-     inString19 +=  ((char)payload[i]); 
+     inString +=  ((char)payload[i]); 
   } 
-     Serial.print("cmd_19("); Serial.print(inString19); Serial.println(")");
+     Serial.print("cmd_19("); Serial.print(inString); Serial.println(")");
 } 
 if (input20 == topic){
- inString20 = "";
+ String inString = "";
   for (int i=0;i<length;i++) {
-     inString20 +=  ((char)payload[i]); 
+     inString +=  ((char)payload[i]); 
   }
-     Serial.print("cmd_20("); Serial.print(inString20); Serial.println(")");
+     Serial.print("cmd_20("); Serial.print(inString); Serial.println(")");
       
 } 
 
 
-*/
+
+/*
 if (startW <1) {weather(); delay(3000);startW++;}
      
     if (millis() - runTime >=(600000 )){
   runTime=millis();
    weather();
-  }
+  }*/
 
  
   // Switch on the LED if an 1 was received as first character
@@ -329,26 +305,27 @@ void reconnect() {
 
       client.subscribe("/grid");
       client.subscribe("/wind");
-      client.subscribe("/temp/28ff48a470165ae");
+      //client.subscribe("/temp/28ff48a470165ae");
+      client.subscribe("/temp/#");
       client.subscribe("/invert");
-      client.subscribe("/humid");
+      //client.subscribe("/humid");
 //---reserved
 
-      client.subscribe("divert");
-      client.subscribe("Ttemp");
-      client.subscribe("Tset");
- /*     client.subscribe("tmp4");
-      client.subscribe("tmp5");
+      client.subscribe("/energy/#");
+      client.subscribe("/WU/#");
+     // client.subscribe("Tset");
+      //client.subscribe("WCT");
+     /* client.subscribe("tmp5");
       client.subscribe("tmp6");
       client.subscribe("tmp7");
-      client.subscribe("tmp8");
-      client.subscribe("tmp9");
-      client.subscribe("tmp10");
-      client.subscribe("tmp11");
-      client.subscribe("tmp12");
-      client.subscribe("tmp13");
-      client.subscribe("tmp14");
-      client.subscribe("tmp15");
+     client.subscribe("tmp8");
+      client.subscribe("WCT");
+      client.subscribe("WCW");
+      client.subscribe("WCH");
+      client.subscribe("WF1");
+      client.subscribe("WF2");
+      client.subscribe("WF3");
+      client.subscribe("WE4");
 */
      
     } else {
@@ -356,7 +333,7 @@ void reconnect() {
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
       // Wait 5 seconds before retrying
-      delay(5000);
+      delay(2000);
     }
   }
 }
