@@ -29,8 +29,8 @@ String input5 = "/grid";
 //---reserved for later use
 
 String input6 = "/energy/divert";
-String input7 = "/temp/Ttemp";
-String input8 = "temp/Tset";
+String input7 = "/switch/Ttemp";
+String input8 = "/switch/Tset";
 String input9 = "/WU/ALERT";
 String input10 = "tmp5";
 String input11 = "tmp6";
@@ -305,28 +305,12 @@ void reconnect() {
 
       client.subscribe("/grid");
       client.subscribe("/wind");
-      //client.subscribe("/temp/28ff48a470165ae");
       client.subscribe("/temp/#");
       client.subscribe("/invert");
-      //client.subscribe("/humid");
-//---reserved
-
+      client.subscribe("/switch/#");
       client.subscribe("/energy/#");
       client.subscribe("/WU/#");
-     // client.subscribe("Tset");
-      //client.subscribe("WCT");
-     /* client.subscribe("tmp5");
-      client.subscribe("tmp6");
-      client.subscribe("tmp7");
-     client.subscribe("tmp8");
-      client.subscribe("WCT");
-      client.subscribe("WCW");
-      client.subscribe("WCH");
-      client.subscribe("WF1");
-      client.subscribe("WF2");
-      client.subscribe("WF3");
-      client.subscribe("WE4");
-*/
+     
      
     } else {
       Serial.print("failed, rc=");
@@ -386,7 +370,7 @@ char test[5];
   {
     String raw_CMD = part2;
          if (client.connected()){
-    if (client.publish("Sw1", (char*) raw_CMD.c_str())) {
+    if (client.publish("/switch/Sw1", (char*) raw_CMD.c_str())) {
       Serial.println("cmd_51(published)");
       digitalWrite(BUILTIN_LED, LOW);
     }
@@ -400,7 +384,7 @@ char test[5];
       //Serial.println(part2);
      String raw_CMD = part2;
             if (client.connected()){
-     if (client.publish("SW2", (char*) raw_CMD.c_str())) {
+     if (client.publish("/switch/SW2", (char*) raw_CMD.c_str())) {
       Serial.println("cmd_51(published)");
       digitalWrite(BUILTIN_LED, LOW);
     }
@@ -415,7 +399,7 @@ char test[5];
      // Serial.println(part2);
       String raw_CMD = part2;
           if (client.connected()){
-     if (client.publish("SW3", (char*) raw_CMD.c_str())) {
+     if (client.publish("/switch/SW3", (char*) raw_CMD.c_str())) {
       Serial.println("cmd_51(published)");
       digitalWrite(BUILTIN_LED, LOW);
     }
@@ -429,7 +413,7 @@ char test[5];
   {
     String raw_CMD = part2;
     if (client.connected()){
-    if (client.publish("SW4", (char*) raw_CMD.c_str())) {
+    if (client.publish("/switch/SW4", (char*) raw_CMD.c_str())) {
       Serial.println("cmd_51(published)");
       digitalWrite(BUILTIN_LED, LOW);
     }
@@ -443,7 +427,7 @@ char test[5];
      // Serial.println(part2);
       String raw_CMD = part2;
           if (client.connected()){
-     if (client.publish("SW5", (char*) raw_CMD.c_str())) {
+     if (client.publish("/switch/SW5", (char*) raw_CMD.c_str())) {
      Serial.println("cmd_51(published)");
       digitalWrite(BUILTIN_LED, LOW);
     }
@@ -458,7 +442,7 @@ char test[5];
       //Serial.println(part2);
       String raw_CMD = part2;
    if (client.connected()){
-     if (client.publish("SW6", (char*) raw_CMD.c_str())) {
+     if (client.publish("switch/SW6", (char*) raw_CMD.c_str())) {
       Serial.println("cmd_51(published)");
       digitalWrite(BUILTIN_LED, LOW);
     }
@@ -473,7 +457,7 @@ char test[5];
       String raw_CMD = part2;
           if (client.connected()){
   
-    if (client.publish("SW7", (char*) raw_CMD.c_str())) {
+    if (client.publish("/switch/SW7", (char*) raw_CMD.c_str())) {
        Serial.println("cmd_51(published)");
       digitalWrite(BUILTIN_LED, LOW);
     }
