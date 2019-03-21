@@ -7,7 +7,7 @@ a TFT grapphing ino for arduino connected to esp or wifi arduino, wemos d3
  
  image of the graph displayed 
  
- https://github.com/krywenko/RA8875_graphing/blob/master/DSC04320.JPG
+ ![alt text](https://github.com/krywenko/RA8875_graphing/blob/master/DSC04320.JPG)
 
 autoconnect... ino ---is the esp wifi connect and sub to mqtt topics to be passed to the arduino ( handles 20 mqtt inputs)
 lCD_sSerial_read. ino --- is just a  base example of the serail read command on the arduino fron esp 
